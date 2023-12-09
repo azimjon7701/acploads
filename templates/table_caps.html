@@ -1,0 +1,35 @@
+<table class="table table-hover table-result">
+    <thead>
+    <tr>
+        <th>Age</th>
+        <th>pickup date</th>
+        <th>Origin</th>
+        <th>DH-O</th>
+        <th>Destination</th>
+        <th>DH-D</th>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Length</th>
+        <th>Weight</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for load in loads %}
+    <tr>
+        <td></td>
+        <td>{{ load.pickup_date }}</td>
+        <td>{{ load.origin }}</td>
+        <td>{{ load.dh_o }}</td>
+        <td>{{ load.destination }}</td>
+        <td>{{ load.dh_d }}</td>
+        <td>{{ load.company.name }}</td>
+        <td>{{ load.company.contacts.first.phone }}</td>
+        <td>{{ load.length }}</td>
+        <td>{{ load.wieght }}</td>
+        <td>{{ load.price }}</td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>

@@ -1,0 +1,693 @@
+{% extends 'layout/base_dash.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        html, body {
+            height: calc(100% - 38px);
+            margin: 0;
+        }
+
+        @media only screen and (min-width: 990px) {
+            .nav-menu-background {
+                height: 65px;
+            }
+        }
+
+        @media only screen and (min-width: 990px) {
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-link {
+                padding-top: 10px !important;
+            }
+
+            .c-layout-header .c-brand {
+                margin: 10px 0 37px 0 !important;
+            }
+
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-btn {
+                margin: 4px 15px 33px 15px !important;
+            }
+
+            .logo-anycap {
+                margin-top: 1px !important;
+            }
+        }
+
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 70px;
+            background-color: #f1f1f1;
+            min-width: 330px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 101;
+            height: 200px;
+        }
+
+        .dropdown-1:hover .dropdown-content-1 {
+            display: block;
+        }
+
+        .dropdown-2:hover .dropdown-content-2 {
+            display: block;
+        }
+
+        .dropdown-3:hover .dropdown-content-3 {
+            display: block;
+        }
+
+        .dropdown-4:hover .dropdown-content-4 {
+            display: block;
+        }
+
+        .dropdown-5:hover .dropdown-content-5 {
+            display: block;
+        }
+
+        .dropdown-block-1:hover .dropdown-content-block-1 {
+            display: block;
+        }
+
+        .dropdown-block-2:hover .dropdown-content-block-2 {
+            display: block;
+        }
+
+        .dropdown-block-3:hover .dropdown-content-block-3 {
+            display: block;
+        }
+
+        .dropdown-block-4:hover .dropdown-content-block-4 {
+            display: block;
+        }
+
+        .dropdown-block-5:hover .dropdown-content-block-5 {
+            display: block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .block-user-btn {
+            padding: 1px 20px 1px 20px !important;
+        }
+
+    </style>
+    <div class="nav-menu-background"></div>
+    <div class="custom-container ">
+        <div class="owerflow-search">
+            <button type="button" class="btn btn-success-custom c-btn-uppercase c-btn-bold" id="add-new-search"
+                    style="margin-left: 145px"><i
+                    class="glyphicon glyphicon-plus-sign"></i>
+                new search
+            </button>
+            <button type="button" class="btn btn-success-custom c-btn-uppercase c-btn-bold" id="view-all-loads"
+                    style="margin-left: 30px">
+                <i class="glyphicon glyphicon-list">
+                </i>
+                Total Results
+            </button>
+            <div class="tableFixHead" style="height: 103%;">
+                <table class="any-cap-table">
+                    <thead>
+                    <tr>
+                        <th class="research-badge"></th>
+                        <th class="th-first th-action">Refresh</th>
+                        <th class="number-column th-action">Time Frame</th>
+                        <th style="width: 105px">Type</th>
+                        <th class="date-column">PU / Date</th>
+                        <th class="number-column">DH-O</th>
+                        <th class="place-column">Origin</th>
+                        <th class="place-column">Destination</th>
+                        <th class="number-column">DH-D</th>
+                        <th class="number-column">Length</th>
+                        <th class="number-column">Weight</th>
+                        <th class="th-action" style="min-width: 80px">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="research-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr style="border-top: 0px">
+        <div class="owerflow-result">
+            <div class="tableFixHead table-responsive" style="height: 100%">
+                <table class="any-cap-table">
+                    <thead>
+                    <tr>
+                        <th class="research-badge"></th>
+                        <th class="th-first th-action">Period</th>
+                        <th class="date-column">PU / Date</th>
+                        <th style="width: 105px">Type</th>
+                        <th class="number-column">DH-O</th>
+                        <th class="place-column">Origin</th>
+                        <th class="number-column">Distance</th>
+                        <th class="place-column">Destination</th>
+                        <th class="number-column">DH-D</th>
+                        <th class="info-column">Comp/User Name</th>
+                        <th class="info-column">Contact</th>
+                        <th class="number-column">Price</th>
+                        <th class="th-verified">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="load-result-table-body">
+                    {% for load in loads %}
+                        <tr class="result-table-row accordion-toggle collapsed cursor-hand-pointer"
+                            id="accordion{{ load.id }}" data-id="accordion{{ load.id }}" data-toggle="collapse"
+                            data-parent="#accordion{{ load.id }}" href="#collapse{{ load.id }}">
+                            <td class="td-action expand-button">{{ load.return_dict.age }}</td>
+                            <td class="td-date">{{ load.return_dict.pickup_date }}</td>
+                            <td class="td-date" data-type-id="{{ load.return_dict.type_id }}">
+                                {{ load.return_dict.type }}
+                            </td>
+                            <td class="td-number">{{ load.return_dict.dh_o }}</td>
+                            <td class="place-column">{{ load.return_dict.origin }}</td>
+                            <td class="td-number">{{ load.return_dict.distance }}</td>
+                            <td class="place-column">{{ load.return_dict.destination }}</td>
+                            <td class="td-number">{{ load.return_dict.dh_d }}</td>
+                            <td class="info-column restrict-text" style="padding-top: 6px; height: 27px;">
+                                <span>{{ load.return_dict.name }}</span></td>
+                            <td class="info-column ">
+                                <div class="restrict-text">{{ load.rendered_contact|safe }}</div>
+                            </td>
+                            <td class="td-number">{{ load.return_dict.price_render }}</td>
+                            <td class="td-verified">
+                                {% if load.owner.status %}
+                                    <span class="glyphicon glyphicon-ok verified-icon"></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr class="hide-table-padding" id="collaps{{ load.id }}" data-id="collaps{{ load.id }}">
+                            <td colspan="12">
+                                <div id="collapse{{ load.id }}" class="collapse p-3"
+                                     style="text-align: -webkit-center;">
+                                    <div style="padding: 15px">
+                                        <div class="row" style="text-align: left;width: 80%">
+                                            <div class="col-md-4">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-md-3 div-right">
+                                                            Ref:
+                                                        </div>
+                                                        <div class="col-md-9 div-left">
+                                                            {% if load.ref_number %}
+                                                                {{ load.ref_number }}
+                                                            {% else %}
+                                                                -
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-3 div-right">
+                                                            Description:
+                                                        </div>
+                                                        <div class="col-md-9 div-left">
+                                                            {{ load.return_dict.comment }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-md-3 div-right">
+                                                            Length:
+                                                        </div>
+                                                        <div class="col-md-3 div-left">
+                                                            {{ load.return_dict.length }}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-3 div-right">
+                                                            Weight:
+                                                        </div>
+                                                        <div class="col-md-3 div-left">
+                                                            {{ load.return_dict.weight }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-md-8 div-right">
+                                                            Comp/User ID:
+                                                        </div>
+                                                        <div class="col-md-3 div-left">
+                                                            {{ load.owner.customer_id }}
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-8 div-right">
+                                                            <button onclick="open_comment_modal('{{ load.owner.id }}')">
+                                                                Comments and Review
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-4 div-left">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div style="text-align: right">
+            <h3 id="results-count">{{ loads.count }} results</h3>
+        </div>
+    </div>
+    <div id="id01" data-action="post" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+            <div class="w3-container">
+                <div class="c-body">
+                    <div class="w3-padding-top-24 c-content-title-1 c-title-md c-margin-b-20 clearfix">
+                        <h3 class="c-center c-font-uppercase c-font-bold modal-header-title">New Search</h3>
+                        <div class="c-line-center c-theme-bg"></div>
+                    </div>
+                    <div class="form-horizontal row">
+                        <div class="col-lg-12 col-md-12">
+                            <input type="hidden" name="form-type">
+                            <input type="hidden" name="id">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-origin" class="col-md-4 control-label">Origin<span
+                                                style="color: red">*</span></label>
+                                        <div class="col-md-6 autocomplete">
+                                            <input name="origin" type="text"
+                                                   class="form-control  c-square c-theme required-input-custom input-addresses"
+                                                   id="input-origin"
+                                                   placeholder="Origin"
+                                                   autocomplete="off"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-dh-o" class="col-md-4 control-label">DH-O<span
+                                                style="color: red">*</span></label>
+                                        <div class="col-md-6">
+                                            <input name="dh_o" type="number"
+                                                   class="form-control  c-square c-theme required-input-custom radius"
+                                                   id="input-dh-o"
+                                                   placeholder="DH-O">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-destination"
+                                               class="col-md-4 control-label">Destination</label>
+                                        <div class="col-md-6">
+                                            <input name="destination" type="text"
+                                                   class="form-control  c-square c-theme input-addresses"
+                                                   id="input-destination"
+                                                   placeholder="Destination"
+                                                   autocomplete="off"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-dh-d" class="col-md-4 control-label">DH-D</label>
+                                        <div class="col-md-6">
+                                            <input name="dh_d" type="number"
+                                                   class="form-control  c-square c-theme required-input-custom radius"
+                                                   id="input-dh-d"
+                                                   placeholder="DH-D">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_distance" class="col-md-4 control-label">Distance</label>
+                                        <div class="col-md-6">
+                                            <input name="distance" type="number" class="form-control  c-square c-theme"
+                                                   id="input_distance"
+                                                   placeholder="Distance"
+                                                   readonly
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_pickup_date" class="col-md-4 control-label">PU / Date</label>
+                                        <div class="col-md-6">
+                                            <input name="pickup_date" type="date" class="form-control  c-square c-theme"
+                                                   id="input_pickup_date"
+                                                   placeholder="Length">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_age" class="col-md-4 control-label">Time Frame</label>
+                                        <div class="col-md-6">
+                                            <input name="age" type="number" class="form-control  c-square c-theme"
+                                                   id="input_age"
+                                                   placeholder="Time Frame">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_length" class="col-md-4 control-label">Length</label>
+                                        <div class="col-md-6">
+                                            <input name="length" type="number" class="form-control  c-square c-theme"
+                                                   id="input_length" value="53"
+                                                   placeholder="Length">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="type" class="col-md-4 control-label">Type</label>
+                                        <div class="col-md-6">
+                                            <select name="type" class="form-control c-square c-theme">
+                                                {% for type in types %}
+                                                    <option value="{{ type.id }}"
+                                                            {% if type.name == "Any" %}selected{% endif %}>{{ type.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_weight" class="col-md-4 control-label">Weight</label>
+                                        <div class="col-md-6">
+                                            <input name="weight" type="number" class="form-control  c-square c-theme"
+                                                   id="input_weight" value=""
+                                                   placeholder="Weight">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group c-margin-t-40">
+                            <div class="col-sm-offset-4 col-md-8">
+                                <button style="width: 80px"
+                                        class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold save-new-search">
+                                    Save
+                                </button>
+                                <button style="width: 80px"
+                                        class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold cancel-new-search">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="user-model" class="w3-modal" style="display: none; height: 108%; padding-top: 65px !important;">
+        <input type="hidden" id="current-owner">
+        <div class="w3-modal-content w3-animate-zoom w3-card-4" style="width: 90%;height: 90%;">
+            <div class="w3-container">
+                <div class="c-body">
+                    <div class="c-content-title-1 c-title-md clearfix">
+                        <div class="row" style="padding: 10px 10px 0px 10px">
+                            <div class="col-md-6 col-sm-6">
+                                <div data-height="height" style="height: 166px;">
+                                    <h3 class="c-font-uppercase c-font-22 c-font-bold c-padding-l-10">User
+                                        Information</h3>
+                                    <div class="row" id="user-info-div">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div data-height="height" style="height: 166px;">
+                                    <h3 class="c-font-uppercase c-font-22 c-font-bold c-padding-l-10">Blocked</h3>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled rating-items">
+                                            <li class="dropdown-block-1">No Communication
+                                                <span class="user-badge c-cart-number c-theme-bg nc_count">0</span>
+                                                <div class="dropdown-content dropdown-content-block-1 field-block-nc">
+
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-block-2">Dissatisfied Service
+                                                <span class="user-badge c-theme-bg ds_count">0</span>
+                                                <div class="dropdown-content dropdown-content-block-2 field-block-ds"></div>
+                                            </li>
+                                            <li class="dropdown-block-3">Unreliable Information
+                                                <span class="user-badge c-theme-bg ui_count">0</span>
+                                                <div class="dropdown-content dropdown-content-block-3 field-block-ui"></div>
+                                            </li>
+                                            <li class="dropdown-block-4">Freight Failure
+                                                <span class="user-badge c-theme-bg ff_count">0</span>
+                                                <div class="dropdown-content dropdown-content-block-4 field-block-ff"></div>
+                                            </li>
+                                            <li class="dropdown-block-5">No Payments
+                                                <span class="user-badge c-theme-bg np_count">0</span>
+                                                <div class="dropdown-content dropdown-content-block-5 field-block-np"></div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div data-height="height" style="height: 166px;">
+                                    <h3 class="c-font-uppercase c-font-22 c-font-bold c-padding-l-10">Rate Review &nbsp;&nbsp;<div
+                                            style="display: inline-block" class="c-product-rating c-right rated-avg">
+                                        <i class="fa fa-star c-font-star"></i>
+                                        <i class="fa fa-star c-font-star"></i>
+                                        <i class="fa fa-star c-font-star"></i>
+                                        <i class="fa fa-star c-font-star"></i>
+                                        <i class="fa fa-star-half-o c-font-star"></i>
+                                    </div>
+                                    </h3>
+                                    <span style="font-size: 30px;position: absolute; right: 0px;"
+                                          class="close-user-modal glyphicon glyphicon-remove"></span>
+                                    <div>
+                                        <div class="col-md-7 dropdown">
+                                            <ul class="list-unstyled rating-items">
+                                                <li class="dropdown-1">
+                                                    <a class="dropbtn">Level of Communication</a>
+                                                    <div class="dropdown-content dropdown-content-1 field-loc">
+                                                    </div>
+                                                </li>
+                                                <li class="dropdown-2">
+                                                    <a class="dropbtn">Level of Service</a>
+                                                    <div class="dropdown-content dropdown-content-2 field-los">
+                                                    </div>
+                                                </li>
+                                                <li class="dropdown-3">
+                                                    <a class="dropbtn">Reliable Information</a>
+                                                    <div class="dropdown-content dropdown-content-3 field-ri">
+                                                        <div>
+                                                            <h3 class="c-font-uppercase c-font-22 c-font-bold c-padding-l-10">
+                                                                &nbsp;Your Rate &nbsp;&nbsp;<div
+                                                                    style="display: inline-block"
+                                                                    class="c-product-rating c-right">
+                                                                <div class="rating-review" data-selected-rate="0"
+                                                                     data-profile="" data-company="2" data-field="fos">
+                                                                    <span class="star-rate fa fa-star-o c-font-star"
+                                                                          data-value="1"></span>
+                                                                    <span class="star-rate fa fa-star-o c-font-star"
+                                                                          data-value="2"></span>
+                                                                    <span class="star-rate fa fa-star-o c-font-star"
+                                                                          data-value="3"></span>
+                                                                    <span class="star-rate fa fa-star-o c-font-star"
+                                                                          data-value="4"></span>
+                                                                    <span class="star-rate fa fa-star-o c-font-star"
+                                                                          data-value="5"></span>
+                                                                </div>
+                                                            </div>
+                                                            </h3>
+                                                            <div>
+                                                                <ul class="rated-users list-unstyled rating-items-users">
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <div class="col-md-7">
+                                                                                &nbsp;
+                                                                            </div>
+                                                                            <div class="col-md-5 c-product-rating c-right">
+                                                                                <i class="fa fa-star-o c-font-star"></i>
+                                                                                <i class="fa fa-star-o c-font-star"></i>
+                                                                                <i class="fa fa-star-o c-font-star"></i>
+                                                                                <i class="fa fa-star-o c-font-star"></i>
+                                                                                <i class="fa fa-star-o c-font-star"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <div class="col-md-7">
+                                                                                &nbsp;Azimjon
+                                                                            </div>
+                                                                            <div class="col-md-5 c-product-rating c-right">
+                                                                                <i class="fa fa-star c-font-star"></i>
+                                                                                <i class="fa fa-star c-font-star"></i>
+                                                                                <i class="fa fa-star c-font-star"></i>
+                                                                                <i class="fa fa-star c-font-star"></i>
+                                                                                <i class="fa fa-star-half-o c-font-star"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="dropdown-4">
+                                                    <a class="dropbtn">Level of Freight Care</a>
+                                                    <div class="dropdown-content dropdown-content-4 field-lofc">
+                                                    </div>
+                                                </li>
+                                                <li class="dropdown-5">
+                                                    <a class="dropbtn">Speed of Payment</a>
+                                                    <div class="dropdown-content dropdown-content-5 field-sop">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <ul class="list-unstyled rating-items">
+                                                <li>
+                                                    <div class="c-product-rating c-right rated-loc">
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="c-product-rating c-right rated-los">
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="c-product-rating c-right rated-ri">
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="c-product-rating c-right rated-lofc">
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="c-product-rating c-right rated-sop">
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                        <i class="fa fa-star-o c-font-star"></i>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal row">
+                        <div class="c-content-tab-4 c-opt-3" role="tabpanel">
+                            <ul class="nav nav-justified" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a class="modal-tab" href="#tab-31" role="tab" data-toggle="tab">COMMENTS</a>
+                                </li>
+                                <li role="presentation">
+                                    <a class="modal-tab" href="#tab-32" role="tab" data-toggle="tab">POSTED LOADS</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" style="background-color: white;">
+                                <div style="position: inherit;" role="tabpanel" class="tab-pane fade in active"
+                                     id="tab-31">
+                                    <div style="position: absolute;
+                                                right: 0px;
+                                                bottom: 55px;
+                                                top: 240px;
+                                                left: 0px;
+                                                z-index: 100;">
+                                        <ul class="c-tab-items chat-body chat-messages-list" style="overflow-x: unset;
+                                                                    overflow-y: scroll;
+                                                                    height: calc(100%);
+                                                                    position: absolute;
+                                                                    vertical-align: baseline;
+                                                                    width: -webkit-fill-available;">
+                                        </ul>
+                                    </div>
+                                    <div style="width: 100%;
+                                                position: absolute;
+                                                bottom: 0px;
+                                                height: 55px">
+                                        <div class="col-md-10">
+                                            <textarea
+                                                    id="message-textbox"
+                                                    style="resize: none;
+                                                            width: -webkit-fill-available;
+                                                            height: 42px;"></textarea>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <a id="submit-comment-button"
+                                               class="btn btn-md c-btn-blue-1 c-font-uppercase c-btn-square"
+                                               style="
+                                                   height: 42px;
+                                                   width: -webkit-fill-available;
+                                                   margin-right: 11px;
+                                                   padding-top: 0px;
+                                                "><i class="fa fa-send-o" style="margin-top: 14px;"></i> SEND</a></div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="tab-32">
+                                    <div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

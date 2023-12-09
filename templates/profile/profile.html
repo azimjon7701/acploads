@@ -1,0 +1,323 @@
+{% extends 'layout/base_dash.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        html, body {
+            height: calc(100% - 38px);
+            margin: 0;
+        }
+
+        @media only screen and (min-width: 990px) {
+            .nav-menu-background {
+                height: 65px;
+            }
+        }
+
+        @media only screen and (min-width: 990px) {
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-link {
+                padding-top: 10px !important;
+            }
+
+            .c-layout-header .c-brand {
+                margin: 10px 0 37px 0 !important;
+            }
+
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-btn {
+                margin: 4px 15px 33px 15px !important;
+            }
+
+            .logo-anycap {
+                margin-top: 1px !important;
+            }
+        }
+    </style>
+
+    <div class="nav-menu-background"></div>
+    <div class="c-content-panel">
+        <div class="c-body">
+            <div class="c-content-tab-1 c-theme" style="box-shadow: 1px 0px 34px -9px;">
+                <div class="nav-justified">
+                    <ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
+                        <li {% if current_tab == 'details' %}class="active"{% endif %}><a href="#tab_3_1_content"
+                                                                                          data-toggle="tab"
+                                                                                          class="c-border-purple">
+                            Account Details
+                        </a></li>
+                        <li><a href="#tab_3_2_content" data-toggle="tab" class="c-border-purple">
+                            Settings
+                        </a></li>
+                        <li {% if current_tab == 'password' %}class="active"{% endif %}><a href="#tab_3_3_content"
+                                                                                           data-toggle="tab"
+                                                                                           class="c-border-purple">
+                            Change Password
+                        </a></li>
+                        <li>
+                            <a href="#tab_3_4_content" data-toggle="tab" class="c-border-purple">
+                                Help
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#tab_3_5_content" data-toggle="tab" class="c-border-purple">
+                                Company
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content c-bordered c-padding-lg">
+                    <div class="tab-pane {% if current_tab == 'details' %} active {% endif %}" id="tab_3_1_content">
+                        <div class="container row center-block">
+                            <div class="row center-block profile-control">
+                                <div class="col-md-6 col- lg-6">
+                                    <h3 class="profile-title">First Name:</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-value">
+                                        {% if request.user.first_name %}{{ request.user.first_name }}{% else %}
+                                            -{% endif %}</h3>
+                                </div>
+                            </div>
+                            <div class="row center-block profile-control">
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-title">Last Name:</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-value">
+                                        {% if request.user.last_name %}{{ request.user.last_name }}{% else %}
+                                            -{% endif %}</h3>
+                                </div>
+                            </div>
+                            <div class="row center-block profile-control">
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-title">Email:</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-value">
+                                        {% if request.user.email %}{{ request.user.email }}{% else %}
+                                            -{% endif %}</h3>
+                                </div>
+                            </div>
+                            <div class="row center-block profile-control">
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-title">Telegram:</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-value">
+                                        {% if request.user.profile.telegram %}
+                                            {{ request.user.profile.telegram }}{% else %}
+                                            -{% endif %}</h3>
+                                </div>
+                            </div>
+                            <div class="row center-block profile-control">
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-title">Phone:</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-6">
+                                    <h3 class="profile-value">
+                                        {% if request.user.profile.phone %}{{ request.user.profile.phone }}{% else %}
+                                            -{% endif %}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_3_2_content">
+                        <div class="container row center-block">
+                            <form action="{% url 'edit_profile' %}" method="post"
+                                  enctype="application/x-www-form-urlencoded" class="center-block">
+                                {% csrf_token %}
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6 ">
+                                        <h3 class="profile-title">First Name:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <input type="text" name="first_name" class="form-control
+                             c-square c-theme profile-input" id="input-first-name" placeholder="First Name"
+                                               {% if request.user.first_name %}value="{{ request.user.first_name }}"{% endif %}>
+                                    </div>
+                                </div>
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6">
+                                        <h3 class="profile-title">Last Name:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <input type="text" name="last_name" class="form-control
+                             c-square c-theme profile-input" id="input-last-name" placeholder="Last Name"
+                                               {% if request.user.last_name %}value="{{ request.user.last_name }}"{% endif %}>
+                                    </div>
+                                </div>
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6">
+                                        <h3 class="profile-title">Telegram:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <input type="text" name="telegram" class="form-control
+                             c-square c-theme profile-input" id="input-telegram" placeholder="@username"
+                                               {% if request.user.profile.telegram %}value="{{ request.user.profile.telegram }}"{% endif %}>
+                                    </div>
+                                </div>
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6">
+                                        <h3 class="profile-title">Phone:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <input type="text" name="phone" class="form-control
+                                 c-square c-theme profile-input" id="input-phone" placeholder="Phone"
+                                               {% if request.user.profile.phone %}value="{{ request.user.profile.phone }}"{% endif %}>
+                                    </div>
+                                </div>
+                                <div class="row center-block profile-control" style="width: 8%">
+                                    <br>
+                                    <button style="font-size: 20px" type="submit"
+                                            class="btn c-theme-btn c-btn-square c-btn-bold center-block">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane {% if current_tab == 'password' %} active {% endif %}" id="tab_3_3_content">
+                        <div class="container row center-block">
+                            <form action="{% url 'password_reset' %}" method="post"
+                                  enctype="application/x-www-form-urlencoded" class="center-block">
+                                {% csrf_token %}
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6 ">
+                                        <h3 class="profile-title">Current Password:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="input-group c-square">
+                                            <input type="password" name="current-password"
+                                                   class="c-theme form-control input-lg c-square"
+                                                   id="login-password"
+                                                   placeholder="Password" required>
+                                            <span class="input-group-btn">
+								        <button class="btn btn-default aye-button0" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon0 glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6 ">
+                                        <h3 class="profile-title">New Password:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="input-group c-square">
+                                            <input type="password" name="new-password"
+                                                   class="c-theme form-control input-lg c-square profile-input"
+                                                   placeholder="New Password" required>
+                                            <span class="input-group-btn">
+								        <button class="btn btn-default aye-button" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row center-block profile-control">
+                                    <div class="col-md-6 col-lg-6 ">
+                                        <h3 class="profile-title">Confirtm Password:</h3>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="input-group c-square">
+                                            <input type="password" name="confirm-password"
+                                                   class="c-theme form-control input-lg c-square profile-input"
+                                                   placeholder="Confirm Password" required>
+                                            <span class="input-group-btn">
+								        <button class="btn btn-default aye-button1" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon1 glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                        </div>
+                                        <span style="color: red">{{ error }}</span>
+                                    </div>
+                                </div>
+                                <div class="row center-block profile-control" style="width: 8%">
+                                    <br>
+                                    <button style="font-size: 20px" type="submit"
+                                            class="btn c-theme-btn c-btn-square c-btn-bold center-block">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_3_4_content">
+
+                        <div class="c-contact container" style="width: 48%">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold">Keep in touch</h3>
+                                <p class="c-font-lowercase">Our helpline is always open to receive any inquiry or
+                                    feedback. Please feel free to drop us an email from the form below and we will get
+                                    back to you as soon as we can.</p>
+                            </div>
+                            <form action="{% url 'contact-us-form' %}" style="text-align: center;" method="post"
+                                  enctype="application/x-www-form-urlencoded" class="center-block">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input name="name" type="text" placeholder="Your Name"
+                                           class="form-control c-square c-theme input-lg" required>
+                                </div>
+                                <div class="form-group">
+                                    <input name="email" type="text" placeholder="Your Email"
+                                           class="form-control c-square c-theme input-lg" required>
+                                </div>
+                                <div class="form-group">
+                                    <input name="phone" type="text" placeholder="Contact Phone"
+                                           class="form-control c-square c-theme input-lg">
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="comment" style="height: 90px; resize: none" rows="8" name="message"
+                                              placeholder="Write comment here ..."
+                                              class="form-control c-theme c-square input-lg" required></textarea>
+                                </div>
+                                <button type="submit"
+                                        class="btn c-theme-btn btn-lg c-btn-bold c-btn-square"
+                                        style="font-size: 24px!important;"
+                                >Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab_3_5_content">
+
+                        <div class="c-contact container" style="width: 48%">
+                            <div class="c-content-title-1">
+                                {% if request.user.profile.get_company_non_active %}
+                                    {{ request.user.profile.get_company_non_active.company_detail_html | safe }}
+                                    {{ request.user.profile.get_membership_status_html | safe }}
+                                {% else %}
+                                    <h3>No Company</h3>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,525 @@
+.nav-menu-background {
+    background-color: #4b4545;
+    height: 65px;
+}
+
+@media only screen and (min-width: 990px) {
+    .nav-menu-background {
+        height: 80px;
+    }
+}
+
+.custom-container {
+    margin: 0.5%;
+    width: 99%;
+    height: 95%;
+    background: #f3f4f5;
+}
+
+.owerflow-search {
+    scroll-margin: 0px;
+    height: calc(30% - 30px);
+    margin-bottom: 10px;
+}
+
+.owerflow-result {
+    overflow-x: auto;
+    scroll-margin: 0px;
+    height: 68%;
+}
+
+.owerflow-load {
+    overflow-x: auto;
+    scroll-margin: 0px;
+    height: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* width */
+::-webkit-scrollbar:horizontal {
+    height: 6px;
+    background-color: white;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track:horizontal {
+    box-shadow: inset 0 0 5px grey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #595b5d;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4f4f50;
+}
+
+.c-link {
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+.container-nav {
+    min-height: 65px !important;
+    height: 65px !important;
+}
+
+.short-nav {
+    min-height: 40px !important;
+    height: 40px !important;
+}
+
+.c-btn-uppercase.btn {
+    margin-bottom: 12px;
+    /*margin-top: 7px;*/
+    /*font-size: 13px !important;*/
+    margin-left: 60px;
+    padding: 4px 10px 3px 10px !important;
+}
+
+/*@media only screen and (min-width: 990px) {*/
+/*    .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-link {*/
+/*        padding-top: 10px !important;*/
+/*    }*/
+
+/*    .c-layout-header .c-brand {*/
+/*        margin: 10px 0 37px 0 !important;*/
+/*    }*/
+
+/*    .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-btn {*/
+/*        margin: 4px 15px 33px 15px !important;*/
+/*    }*/
+/*}*/
+
+.c-btn-border-1x.c-btn-grey-2 {
+    border-color: #677083;
+    color: #ffffff;
+    background: none;
+    border-color: #ffffff;
+    font-weight: normal !important;
+}
+
+.menu-button-main {
+    margin-left: 40px !important;
+    margin-top: 18px !important;
+    font-size: 20px !important;
+}
+
+.menu-button-last {
+    margin-right: 50px;
+}
+
+.c-post-img img {
+    width: 25px;
+    border-radius: 25px;
+}
+
+.c-post-img {
+    height: 0px;
+}
+
+.c-post-img:hover {
+    height: 0px;
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-nav > li > a {
+        padding-top: 7.5px;
+        padding-bottom: 0px;
+    }
+}
+
+.navbar-nav {
+    list-style: none;
+}
+
+.img-avatar {
+    margin-top: 7px;
+}
+
+.avatar-label {
+    color: white;
+}
+
+.avatar-label:hover {
+    color: white !important;
+}
+
+.btn-success-custom {
+    background: #48749b;
+    border-color: #48749b;
+    color: white;
+}
+
+.btn-success-custom:focus {
+    background: #80a0bd;
+    border-color: #80a0bd;
+    color: white;
+}
+
+.btn-success-custom:hover {
+    background: #80a0bd;
+    border-color: #80a0bd;
+    color: white;
+}
+
+
+/*.container, .container-fluid {*/
+/*    margin-right: 100px;*/
+/*    margin-left: 100px;*/
+/*}*/
+
+.logo-anycap {
+    margin-top: 1px !important;
+}
+
+.black-transparent-03 {
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+.custom-logo {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu-mixed {
+    background: rgba(0, 0, 0, 0.7) !important;
+    height: 65px;
+}
+
+.nav-menu-mixed-link {
+    padding-top: 23px !important;
+}
+
+.logo-div-mixed {
+    margin-top: 22px !important;
+}
+
+.auth-link-mixed {
+    margin-top: 21px !important;
+}
+
+.c-layout-header.c-layout-header-default .c-navbar .c-mega-menu > .nav.navbar-nav > li:focus > a:not(.btn):not(.c-btn-icon):not(.c-quick-sidebar-toggler):before, .c-layout-header.c-layout-header-default .c-navbar .c-mega-menu > .nav.navbar-nav > li:active > a:not(.btn):not(.c-btn-icon):not(.c-quick-sidebar-toggler):before, .c-layout-header.c-layout-header-default .c-navbar .c-mega-menu > .nav.navbar-nav > li:hover > a:not(.btn):not(.c-btn-icon):not(.c-quick-sidebar-toggler):before, .c-layout-header.c-layout-header-default .c-navbar .c-mega-menu > .nav.navbar-nav > li.c-active > a:not(.btn):not(.c-btn-icon):not(.c-quick-sidebar-toggler):before {
+    /*display: none;*/
+    top: 14px;
+}
+
+.image-centered {
+    height: 70px;
+    width: auto;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.image-centered-div {
+    background-color: #80a0bd;
+    width: 100px;
+    height: 100px;
+    border-radius: 70px;
+}
+
+.hover-on-image-div {
+    opacity: 1 !important;
+}
+
+.cursor-hand-pointer {
+    cursor: pointer;
+}
+
+.contact-list-item {
+    color: white;
+}
+
+/* select modal */
+
+
+/* The Modal (background) */
+.select-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 10000; /* Sit on top */
+    padding-top: 150px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #cde0f7f0;
+    margin: auto;
+    border: 1px solid #888;
+    width: 700px;
+    height: 460px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.select-modal-buttons {
+    text-align: center;
+}
+
+.btn-modal-select {
+    font-size: 50px;
+    margin-top: 72px;
+    padding: 20px 98px !important;
+    font-weight: 700 !important;
+    border-width: 5px !important;
+    border-radius: 8px !important;
+    border-color: #80a0bd !important;
+    color: #80a0bd !important;
+}
+
+.btn-modal-select:hover {
+    background-color: #80a0bd !important;
+    color: white !important;
+}
+
+/*.c-layout-header .c-cart-menu {*/
+/*    display: block !important;*/
+/*}*/
+
+.user-cart-content {
+    color: white !important;
+    padding-top: 7.5px !important;
+    padding-bottom: 7.5px !important;
+    padding-left: 10px !important;
+}
+
+.user-cart-content-li {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    border: none !important;
+}
+
+.user-cart-content-a {
+    color: white !important;
+    font-weight: 100 !important;
+}
+
+.user-cart-modal {
+    width: 130px !important;
+    top: 45% !important;
+    right: -1.5% !important;
+    border-radius: 8px !important;
+    border-width: 0.1px !important;
+    border-color: #566564 !important;
+    font-size: 15px !important;
+    background-color: rgb(0 0 0 / 67%) !important;
+}
+
+.select-modal-header {
+    border-bottom: 2px solid #d5d3d3 !important;
+    border-color: #566564 !important;
+    border-width: 0.1px !important;
+}
+
+.select-modal-footer {
+    border-top: 2px solid #d5d3d3 !important;
+    border-width: 0.1px !important;
+    border-color: #566564 !important;
+}
+
+.c-border-purple {
+    border-color: #4b4545 !important;
+}
+
+.profile-input {
+    font-size: 21px;
+}
+
+.profile-value {
+    font-size: 22px;
+}
+
+.profile-title {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.profile-control {
+    width: 60%;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #3cb878 !important;
+}
+
+.close-btn-modal:hover {
+    background-color: #80a0bd !important;
+    color: white;
+}
+
+.glyphicon-edit {
+    font-size: 12px !important;
+}
+
+.glyphicon-trash {
+    font-size: 12px !important;
+}
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.autocomplete-items div {
+    padding-right: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+/* Chat */
+.chat-me {
+    max-width: 75%;
+    min-width: 20%;
+    padding: 5px 20px 5px 20px;
+    background-color: #def2ff;
+    margin-left: 40px;
+    display: inline-block;
+}
+
+.chat-me p {
+    text-align: left;
+    margin: 0 0 0px;
+    color: black !important;
+}
+
+.chat-from p {
+    text-align: left;
+    margin: 0 0 0px;
+    color: black !important;
+}
+
+.chat-from h4 {
+    padding-bottom: 0px !important;
+}
+
+.chat-from {
+    max-width: 75%;
+    min-width: 20%;
+    padding: 5px 20px 5px 20px;
+    background-color: #f6f9fb;
+    margin-left: 40px;
+    display: inline-block;
+}
+
+.chat-from span {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+}
+
+.chat-me span {
+    font-size: 12px;
+}
+
+.chat-messages-list li {
+    padding: 5px 0px !important;
+}
+
+.chat-messages-list {
+    padding-bottom: 0px !important;
+}
+
+.modal-tab {
+    padding: 10px 15px !important;
+}
+
+.rating-items li {
+    width: max-content;
+}
+
+.rating-items-users li {
+    width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.rated-users {
+    overflow-x: clip;
+    overflow-y: scroll;
+    height: calc(75%);
+    position: absolute;
+    vertical-align: baseline;
+    width: -webkit-fill-available;
+}
+
+.rating-items li .c-product-rating {
+    display: inline-block;
+}
+
+.user-badge {
+    margin-left: 5px;
+    position: relative;
+    top: -3px;
+    display: inline-block;
+    border-radius: 20px;
+    text-align: center;
+    padding: 3px 0;
+    height: 23px;
+    font-size: 12px;
+    width: 25px;
+    color: #ffffff;
+}
+
+.c-theme-bg {
+    background-color: #ff0000 !important;
+}
+
+.c-font-star {
+    color: #5bc2ce !important;
+}

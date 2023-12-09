@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    {% include 'layout/head.html' %}
+</head>
+<body>
+<div class="c-content-box c-size-md c-bg-white">
+    <div class="container ">
+        <div class="row" style="text-align: -webkit-center;">
+            <div class="col-md-12">
+                <div class="c-content-panel"
+                     style=" border-radius: 10px;width: 50%;box-shadow: 1px 0px 34px -9px; margin-top: 30px">
+                    <div>
+                        <div class="modal-header c-no-border">
+
+                        </div>
+                        <div class="modal-body">
+                            <div class="center-block" style="text-align: center">
+                                <span aria-hidden="true" class=" icon-user-following" style="font-size: 80px"></span>
+                                <h3 style="font-size: 40px;color: #5c6873;"
+                                    class="c-font-24 c-font-sbold profile-title">Confirmation</h3>
+                            </div>
+                            <br>
+                            <form enctype="application/x-www-form-urlencoded" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="login-confirmation" class="hide">Confirmation code:</label>
+                                    <input type="confirmation" name="confirmation"
+                                           class="form-control input-lg c-square" id="login-email"
+                                           placeholder="Confirmation Code" required>
+                                    <i style="color: red">{{ error }}</i>
+                                </div>
+                                <div class="form-group">
+                                    <br>
+                                    <button type="submit"
+                                            class="btn c-theme-btn btn-md c-btn-bold c-btn-square c-btn-login">
+                                        CONFIRM
+                                    </button>
+                                    <br>
+                                    <br>
+                                    <a href="{% url 'login' %}" class="c-btn-forgot"
+                                       style="font-weight: bold;color: #5c6873">BACK TO LOGIN</a>
+                                </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal-choiser fade c-content-login-form in" id="forget-password-form" role="dialog"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content c-square">
+            <div class="modal-header c-no-border">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                <p>To recover your password please fill in your email address</p>
+
+                <div class="form-group">
+                    <label for="forget-email" class="hide">Email</label>
+                    <input type="email" class="form-control input-lg c-square"
+                           id="forget-email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <button type="submit"
+                            class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">
+                        Submit
+                    </button>
+                    <a class="c-btn-forgot" data-dismiss="modal">Back To
+                        Login</a>
+                </div>
+            </div>
+            <div class="modal-footer c-no-border">
+                <span class="c-text-account">Don't Have An Account Yet ?</span>
+                <a href="javascript:;" data-toggle="modal" data-target="#signup-form"
+                   data-dismiss="modal"
+                   class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{#<script>#}
+{#    $('.open-choise-modal').click(function () {#}
+{#        $('.modal-choiser').show()#}
+{#    })#}
+{#</script>#}
+</html>

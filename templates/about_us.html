@@ -1,0 +1,53 @@
+{% extends 'layout/base_simple.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- BEGIN: CONTENT/MISC/ABOUT-1 -->
+    <div class="c-content-box c-size-md c-bg-white" style="margin-top: 70px">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 wow animated fadeInLeft">
+                    <!-- Begin: Title 1 component -->
+                    <div class="c-content-title-1">
+                        <h3 class="c-font-uppercase c-font-bold">About us</h3>
+                        <div class="c-line-left c-theme-bg"></div>
+                    </div>
+                    <!-- End-->
+                    <p>Any Cap Pro offers fast and easy loadboard platform for Freight Shipper, Brokers, Carriers and Owner-Operators.
+                        We’re on a mission to help that make their work easy and fast through thoughtful platform.</p>
+                    <h3 class="c-content-list-1 c-theme  c-font-uppercase">The advantages of our platform are:</h3>
+                    <ul class="c-content-list-1 c-theme  c-font-uppercase" style="font-size: 28px;">
+                        <li>Quick</li>
+                        <li>Easy</li>
+                        <li>Secure</li>
+                        <li>Comfortable and</li>
+                        <li>Understandable</li>
+                    </ul>
+                    <p>Let’s Join Us now. &emsp; &emsp; &emsp; &emsp; {% if request.user.profile %}{% else %}<a href="{% url 'register' %}" class="btn btn-lg c-btn-green">SIGN UP</a>{% endif %}</p>
+                </div>
+                <div class="col-sm-6 wow animated fadeInRight">
+                    <div class="c-content-client-logos-1">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold" style="color: white">Text</h3>
+                        </div>
+                        <!-- End-->
+                        <div class="c-logos">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12 ">
+                                    <a href="#"><img
+                                            style="width: 100%;"
+                                            src="{% static 'custom-images/home/hiwbg.webp' %}"
+                                            alt=""/></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- END: CONTENT/MISC/ABOUT-1 -->
+
+
+{% endblock %}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    {% include 'layout/head.html' %}
+</head>
+<body>
+<div class="c-content-box c-size-md c-bg-white">
+    <div class="container ">
+        <div class="row" style="text-align: -webkit-center;">
+            <div class="col-md-12">
+                <div class="c-content-panel"
+                     style=" border-radius: 10px;width: 50%;box-shadow: 1px 0px 34px -9px; margin-top: 30px">
+                    <div>
+                        <div class="modal-header c-no-border" style="padding-top: 0px;">
+
+                        </div>
+                        <div class="c-body">
+                            <div class="center-block" style="text-align: center">
+                                <h3 class="c-font-24 c-font-sbold center-block"
+                                    style="font-size: 40px;color: #5c6873;">
+                                    Sign Up</h3>
+                            </div>
+                            <div class="c-content-tab-1 c-theme c-margin-t-30">
+                                <div class="nav-justified">
+                                    <ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
+                                        <li class="active"><a href="#login_simple" data-toggle="tab"
+                                                              class="c-border-purple">
+                                            <div class="center-block" style="text-align: center">
+                                                    <span aria-hidden="true" class="fa fa-user"
+                                                          style="font-size: 80px"></span>
+                                                <h3 class="c-font-24 c-font-sbold center-block"
+                                                    style="font-size: 25px;color: #5c6873;">
+                                                    As User</h3>
+                                            </div>
+                                        </a></li>
+                                        <li><a href="#login_company" data-toggle="tab"
+                                               class="c-border-purple">
+                                            <div class="center-block" style="text-align: center">
+                                                    <span aria-hidden="true" class="fa fa-users"
+                                                          style="font-size: 80px"></span>
+                                                <h3 class="c-font-24 c-font-sbold center-block"
+                                                    style="font-size: 25px;color: #5c6873;">
+                                                    As Company</h3>
+                                            </div>
+                                        </a></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content c-bordered c-padding-lg">
+                                    <div class="tab-pane active" id="login_simple">
+                                        <form enctype="application/x-www-form-urlencoded" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="tab" value="simple">
+                                            <div class="form-group">
+                                                <label for="signup-firstname" class="hide">First name</label>
+                                                <input required name="first_name" type="text"
+                                                       class="form-control input-lg c-square"
+                                                       id="signup-firstname"
+                                                       placeholder="First name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-name" class="hide">Fullname</label>
+                                                <input required name="last_name" type="text"
+                                                       class="form-control input-lg c-square"
+                                                       id="signup-name"
+                                                       placeholder="Last name">
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="signup-email" class="hide">Email</label>
+                                                <input required type="email" name="email"
+                                                       class="form-control input-lg c-square"
+                                                       id="signup-email"
+                                                       placeholder="Email">
+                                                <span style="color: red">{{ email_error }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="signup-username" class="hide">Password</label>
+                                                <div class="input-group c-square">
+                                                    <input type="password" name="password"
+                                                           class="c-theme form-control input-lg c-square"
+                                                           id="login-password"
+                                                           placeholder="Password" required>
+                                                    <span class="input-group-btn">
+								        <button class="btn btn-default aye-button" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new-password" class="hide">Password confirmation</label>
+                                                <div class="input-group c-square">
+                                                    <input type="password" name="password1"
+                                                           class="c-theme form-control input-lg c-square"
+                                                           id="new-password"
+                                                           placeholder="Password confirmation" required>
+                                                    <span class="input-group-btn">
+								        <button class="btn btn-default aye-button1" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon1 glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                                </div>
+                                                <span style="color: red;">{{ error }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="c-checkbox" style="text-align: left;">
+                                                    <input name="terms" type="checkbox" id="login-rememberme" required>
+                                                    <label for="login-rememberme" class="c-font-thin c-font-17">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                        I accept the <a target="_blank" href="{% url 'terms' %}"
+                                                                        style="font-weight: 700;color: #32c5d2;">Terms
+                                                        of
+                                                        Service</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                        onclick="function f() {
+                                              console.log('Submit')
+                                            }"
+                                                        class="btn c-theme-btn btn-md c-btn-bold c-btn-square c-btn-login">
+                                                    SIGN UP
+                                                </button>
+                                                <br>
+                                                <br>
+                                                <a href="{% url 'login' %}" class="c-btn-forgot"
+                                                   style="font-weight: bold;color: #5c6873">BACK TO LOGIN</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane" id="login_company">
+                                        <form enctype="application/x-www-form-urlencoded" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="tab" value="company">
+                                            <div class="form-group">
+                                                <label for="c-signup-firstname" class="hide">First name</label>
+                                                <input required name="first_name" type="text"
+                                                       class="form-control input-lg c-square"
+                                                       id="c-signup-firstname"
+                                                       placeholder="First name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="c-signup-name" class="hide">Fullname</label>
+                                                <input required name="last_name" type="text"
+                                                       class="form-control input-lg c-square"
+                                                       id="c-signup-name"
+                                                       placeholder="Last name">
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="c-signup-email" class="hide"></label>
+                                                <select class="form-control input-lg c-square c-theme" name="is-new-company" id="is-new-company">
+                                                    <option class="input-lg" value="false">Choose Available ID</option>
+                                                    <option class="input-lg" value="true">Create New ID</option>
+                                                </select>
+                                                {#                                                <span style="color: red">{{ email_error }}</span>#}
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="company-id" class="hide">New ID</label>
+                                                <input required type="text" name="company-id"
+                                                       class="form-control input-lg c-square c-theme"
+                                                       id="company-id"
+                                                       style='text-transform:uppercase'
+                                                       onkeydown="return /[A-Z]/i.test(event.key)"
+                                                       maxlength="4"
+                                                       placeholder="Company ID">
+                                                <span class="id-check-res" style="color: slategrey;font-size: 13px;">&nbsp;&nbsp;Only characters A-Z</span>
+                                            </div>
+                                            <div class="form-group" style="text-align: left;">
+                                                <label for="c-signup-email" class="hide">Email</label>
+                                                <input required type="email" name="email"
+                                                       class="form-control input-lg c-square"
+                                                       id="c-signup-email"
+                                                       placeholder="Email">
+                                                <span style="color: red">{{ email_error }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="c-signup-password" class="hide">Password</label>
+                                                <div class="input-group c-square">
+                                                    <input type="password" name="password"
+                                                           class="c-theme form-control input-lg c-square"
+                                                           id="c-signup-password"
+                                                           placeholder="Password" required>
+                                                    <span class="input-group-btn">
+								        <button class="btn btn-default aye-button" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="c-new-password" class="hide">Password confirmation</label>
+                                                <div class="input-group c-square">
+                                                    <input type="password" name="password1"
+                                                           class="c-theme form-control input-lg c-square"
+                                                           id="c-new-password"
+                                                           placeholder="Password confirmation" required>
+                                                    <span class="input-group-btn">
+								        <button class="btn btn-default aye-button1" type="button"
+                                                style="
+                                            background-color: white;
+                                            border-left: none;
+                                            height: 46px;
+                                            width: 50px;
+                                        ">
+                                            <span style="font-size: 13px;color: #5c6873;margin-right: 6px; margin-top: 1px;"
+                                                  class="aye-icon1 glyphicon form-control-feedback glyphicon-eye-close"></span>
+                                            </button>
+								      </span>
+                                                </div>
+                                                <span style="color: red;">{{ error }}</span>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="c-checkbox" style="text-align: left;">
+                                                    <input name="terms" type="checkbox" id="login-rememberme-company" required>
+                                                    <label for="login-rememberme-company" class="c-font-thin c-font-17">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span>
+                                                        I accept the <a target="_blank" href="{% url 'terms' %}"
+                                                                        style="font-weight: 700;color: #32c5d2;">Terms
+                                                        of
+                                                        Service</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                        onclick="function f() {
+                                              console.log('Submit')
+                                            }"
+                                                        disabled
+                                                        class="company-signup-btn btn c-theme-btn btn-md c-btn-bold c-btn-square c-btn-login">
+                                                    SIGN UP
+                                                </button>
+                                                <br>
+                                                <br>
+                                                <a href="{% url 'login' %}" class="c-btn-forgot"
+                                                   style="font-weight: bold;color: #5c6873">BACK TO LOGIN</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% include 'layout/foot.html' %}
+<script src="{% static 'custom-js/auth-actions.js' %}" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>

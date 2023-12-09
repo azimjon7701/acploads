@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if IE 9]>
+<html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+{% include 'layout/head.html' %}
+<body class="c-layout-header-fixed c-layout-header-mobile-fixed c-layout-header-fullscreen">
+
+<!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+<!-- BEGIN: HEADER -->
+{% include 'layout/header_base.html' %}
+<!-- END: HEADER -->
+<!-- END: LAYOUT/HEADERS/HEADER-1 -->
+
+<!-- BEGIN: CONTENT/AUTHENTICATION -->
+{% include 'layout/authentication.html' %}
+<!-- END: CONTENT/AUTHENTICATION -->
+<!-- BEGIN: PAGE CONTAINER -->
+{% block content %}
+
+{% endblock %}
+<!-- END: PAGE CONTAINER -->
+<!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+<!-- END: LAYOUT/FOOTERS/GO2TOP -->
+
+<!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+<!-- BEGIN: CORE PLUGINS -->
+
+{% include 'layout/foot.html' %}
+{% include 'layout/footer.html' %}
+<!-- END: PAGE SCRIPTS -->
+<!-- END: LAYOUT/BASE/BOTTOM -->
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends 'layout/base_dash.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        html, body {
+            height: calc(100% - 38px);
+            margin: 0;
+        }
+
+        @media only screen and (min-width: 990px) {
+            .nav-menu-background {
+                height: 65px;
+            }
+        }
+
+        @media only screen and (min-width: 990px) {
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-link {
+                padding-top: 10px !important;
+            }
+
+            .c-layout-header .c-brand {
+                margin: 10px 0 37px 0 !important;
+            }
+
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-btn {
+                margin: 4px 15px 33px 15px !important;
+            }
+
+            .logo-anycap {
+                margin-top: 1px !important;
+            }
+        }
+    </style>
+
+    <div class="nav-menu-background"></div>
+    <div class="c-content-panel">
+        <div class="c-body">
+            <div class="c-content-tab-1 c-theme" style="box-shadow: 1px 0px 34px -9px;">
+                <div class="nav-justified">
+                    <ul class="nav nav-tabs nav-justified c-font-uppercase c-font-bold">
+                        <li {% if current_tab == 'details' %}class="active"{% endif %}><a href="#tab_3_1_content"
+                                                                                          data-toggle="tab"
+                                                                                          class="c-border-purple">
+                            Results</a></li>
+                        <li><a href="#tab_3_2_content" data-toggle="tab" class="c-border-purple">
+                            Blocked Carriers
+                        </a></li>
+                    </ul>
+                </div>
+                <div class="tab-content c-bordered c-padding-lg">
+                    <div class="tab-pane {% if current_tab == 'details' %} active {% endif %}" id="tab_3_1_content">
+                    <ul>
+                        {% for user in users %}
+                            <li>{{ user.email }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    </div>
+                    <div class="tab-pane" id="tab_3_2_content">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

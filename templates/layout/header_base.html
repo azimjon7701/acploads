@@ -1,0 +1,150 @@
+<!-- BEGIN: HEADER -->
+{% load static %}
+<!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+<!-- BEGIN: HEADER -->
+<header class="c-layout-header c-layout-header-default c-layout-header-dark-mobile c-header-transparent-dark nav-menu-mixed"
+        data-minimize-offset="80">
+    <div class="c-navbar">
+        <div class="container">
+            <!-- BEGIN: BRAND -->
+            <div class="c-navbar-wrapper clearfix">
+                <div class="c-brand c-pull-left logo-div-mixed">
+                    <a href="{% url 'home' %}" class="c-logo">
+                        <img src="{% static 'custom-icons/anycappro2.svg' %}" alt="AnyCapPro"
+                             class="c-desktop-logo custom-logo">
+                        <img src="{% static 'custom-icons/anycappro2.svg' %}" alt="AnyCapPro"
+                             class="c-desktop-logo-inverse custom-logo">
+                        <img src="{% static 'custom-icons/anycappro2.svg' %}" alt="AnyCapPro"
+                             class="c-mobile-logo custom-logo">
+                    </a>
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                </div>
+                <!-- END: BRAND -->
+                <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- BEGIN: MEGA MENU -->
+                <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
+                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                    <ul class="nav navbar-nav c-theme-nav">
+                        <li {% if current_menu == 'home' %}class="c-active"
+                            {% else %}class="c-menu-type-classic"{% endif %}>
+                            <a href="{% url 'home' %}" class="c-link dropdown-toggle nav-menu-mixed-link">Home<span
+                                    class="c-arrow c-toggler"></span></a>
+
+
+                        </li>
+                        <li {% if current_menu == 'how-it-works' %}class="c-active"
+                            {% else %}class="c-menu-type-classic"{% endif %}>
+                            <a href="{% url 'how_it_works' %}" class="c-link dropdown-toggle nav-menu-mixed-link">How it
+                                works<span
+                                        class="c-arrow c-toggler"></span></a>
+
+
+                        </li>
+                        <li {% if current_menu == 'about-us' %}class="c-active"
+                            {% else %}class="c-menu-type-classic"{% endif %}>
+                            <a href="{% url 'about_us' %}" class="c-link dropdown-toggle nav-menu-mixed-link">About<span
+                                    class="c-arrow c-toggler"></span></a>
+
+
+                        </li>
+                        <li {% if current_menu == 'contact-us' %}class="c-active"
+                            {% else %}class="c-menu-type-classic"{% endif %}>
+                            <a href="{% url 'contact_us' %}"
+                               class="c-link dropdown-toggle nav-menu-mixed-link">Contact<span
+                                    class="c-arrow c-toggler"></span></a>
+
+
+                        </li>
+                        <li>
+                            <a  {% if request.user.username %}
+                                class="c-cart-toggler c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold nav-menu-mixed-link auth-link-mixed"
+                                href="javascript:;"
+                            {% else %}
+                                href="{% url 'login' %}"
+                                class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold nav-menu-mixed-link auth-link-mixed"
+                            {% endif %}
+                            ><i class="icon-user"></i>
+                                {% if request.user.profile %}{{ request.user.profile }}{% else %}SIGN IN{% endif %}
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </nav>
+                <!-- END: MEGA MENU --><!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- END: HOR NAV -->
+            </div>
+            <!-- BEGIN: LAYOUT/HEADERS/QUICK-CART -->
+            <!-- BEGIN: CART MENU -->
+            <div class="c-cart-menu user-cart-modal" style="
+                                    width: 120px !important;
+                                    top: 51%!important;
+                                    right: 0.5% !important;
+                                    border-radius: 3px;">
+                <ul class="c-cart-menu-items" style="margin-bottom: 0px;">
+                    <li class="user-cart-content-li select-modal-header">
+                        <div class="c-cart-menu-content user-cart-content ">
+                            <a href="javascript:;" id="btn-open-select-modal"
+                               class="c-item-name c-font-sbold user-cart-content-a">Dashboard</a>
+                        </div>
+                    </li>
+                    <li class="user-cart-content-li">
+                        <div class="c-cart-menu-content user-cart-content">
+                            <a href="{% url 'account' %}"
+                               class="c-item-name c-font-sbold user-cart-content-a">Profile</a>
+                        </div>
+                    </li>
+                    <li class="user-cart-content-li select-modal-header">
+                        <div class="c-cart-menu-content user-cart-content">
+                            <a href="{% url 'blocked-users' %}"
+                               class="c-item-name c-font-sbold user-cart-content-a">Report</a>
+                        </div>
+                    </li>
+                    <li class="user-cart-content-li select-modal-footer">
+                        <div class="c-cart-menu-content user-cart-content">
+                            <a href="{% url 'logout' %}" class="c-item-name c-font-sbold user-cart-content-a">Log
+                                out</a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- END: CART MENU --><!-- END: LAYOUT/HEADERS/QUICK-CART -->
+        </div>
+    </div>
+</header>
+<!-- END: HEADER --><!-- END: LAYOUT/HEADERS/HEADER-1 -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="select-modal" {% if modal == 'opened' %}style="display: block;" {% endif %}>
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div>
+            <div style="    text-align: right;
+            font-size: 35px;
+            font-weight: 600;
+            color: #80a0bd;
+            margin-right: 17px;
+            margin-top: 6px !important;
+            font-family: monospace;">
+                <span style="font-size: 30px;" class="close-btn-modal glyphicon glyphicon-remove"></span>
+            </div>
+            <div class="select-modal-buttons">
+                <a href="{% url 'shipper' %}" style="margin-top: 15px;"
+                   class="btn btn-xlg c-btn-blue c-font-uppercase c-font-bold c-btn-border-1x btn-modal-select">SHIPPER</a>
+            </div>
+            <div class="select-modal-buttons">
+                <a href="{% url 'carrier' %}"
+                   class="btn btn-xlg c-btn-blue c-font-uppercase c-font-bold c-btn-border-1x btn-modal-select">CARRIER</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+

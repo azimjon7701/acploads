@@ -1,0 +1,267 @@
+{% extends 'layout/base_dash.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        html, body {
+            height: calc(100% - 25px);
+            margin: 0;
+        }
+
+        @media only screen and (min-width: 990px) {
+            .nav-menu-background {
+                height: 65px;
+            }
+        }
+
+        @media only screen and (min-width: 990px) {
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-link {
+                padding-top: 10px !important;
+            }
+
+            .c-layout-header .c-brand {
+                margin: 10px 0 37px 0 !important;
+            }
+
+            .c-layout-header .c-navbar .c-mega-menu > .nav.navbar-nav > li > .c-btn {
+                margin: 4px 15px 33px 15px !important;
+            }
+        }
+    </style>
+    <div class="nav-menu-background"></div>
+    <div class="custom-container ">
+        <div class="owerflow-load">
+            <button type="button" class="btn btn-success-custom c-btn-uppercase c-btn-bold" id="add-new-load"
+                    style="margin-left: 145px;"><i
+                    class="glyphicon glyphicon-plus-sign"></i>
+                Add new load
+            </button>
+            <div class="tableFixHead table-responsive" style="height: 93%">
+                <table class="any-cap-table">
+                    <thead>
+                    <tr>
+                        <th class="research-badge"></th>
+                        <th class="th-first">Repost</th>
+                        <th class="th-first th-action">Period</th>
+                        <th class="date-column">PU / Date</th>
+                        <th style="width: 105px">Type</th>
+                        <th class="place-column">Origin</th>
+                        {#                        <th class="number-column">DH-O</th>#}
+                        <th class="number-column">Distance</th>
+                        <th class="place-column">Destination</th>
+                        {#                        <th class="number-column">DH-D</th>#}
+                        <th class="info-column">Comp/User&nbsp; Name</th>
+                        <th class="info-column">Contact</th>
+                        <th class="number-column">Price</th>
+                        <th class="th-verified">Status</th>
+                        <th class="th-action" style="min-width: 80px">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="load-table-body">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="id02" data-action="post" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom w3-card-4">
+            <div class="w3-container">
+                <div class="c-body">
+                    <div class="w3-padding-top-24 c-content-title-1 c-title-md c-margin-b-20 clearfix">
+                        <h3 class="c-center c-font-uppercase c-font-bold modal-header-title">New Load</h3>
+                        <div class="c-line-center c-theme-bg"></div>
+                    </div>
+                    <div class="form-horizontal row">
+                        <div class="col-lg-12 col-md-12">
+                            <input type="hidden" name="form-type">
+                            <input type="hidden" name="id">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-origin" class="col-md-4 control-label">Origin<span
+                                                style="color: red">*</span></label>
+                                        <div class="col-md-6">
+                                            <input name="origin" type="text"
+                                                   class="input-addresses form-control  c-square c-theme required-input-custom"
+                                                   id="input-origin"
+                                                   placeholder="Origin"
+                                                   autocomplete="off"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-ref-num" class="col-md-4 control-label">Ref</label>
+                                        <div class="col-md-6">
+                                            <input name="ref-number" type="text"
+                                                   class="form-control  c-square c-theme required-input-custom"
+                                                   id="input-ref-num"
+                                                   placeholder="Reference Number" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-destination"
+                                               class="col-md-4 control-label">Destination</label>
+                                        <div class="col-md-6">
+                                            <input name="destination" type="text"
+                                                   class="input-addresses form-control  c-square c-theme"
+                                                   id="input-destination"
+                                                   placeholder="Destination"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input-price" class="col-md-4 control-label">Price</label>
+                                        <div class="col-md-6">
+                                            <input name="price" type="number" class="form-control  c-square c-theme"
+                                                   id="input-price"
+                                                   placeholder="Price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_distance" class="col-md-4 control-label">Distance</label>
+                                        <div class="col-md-6">
+                                            <input name="distance" type="number" class="form-control  c-square c-theme"
+                                                   id="input_distance"
+                                                   placeholder="Distance"
+                                                   disabled
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_length" class="col-md-4 control-label">Length</label>
+                                        <div class="col-md-6">
+                                            <input name="length" type="number" class="form-control  c-square c-theme"
+                                                   id="input_length" value="53"
+                                                   placeholder="Length">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_pickup_date" class="col-md-4 control-label">PU / Date</label>
+                                        <div class="col-md-6">
+                                            <input name="pickup_date" type="date" class="form-control  c-square c-theme"
+                                                   id="input_pickup_date"
+                                                   placeholder="Date">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_weight" class="col-md-4 control-label">Weight</label>
+                                        <div class="col-md-6">
+                                            <input name="weight" type="number" class="form-control  c-square c-theme"
+                                                   id="input_weight"
+                                                   placeholder="Weight">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="type" class="col-md-4 control-label">Type</label>
+                                        <div class="col-md-6">
+                                            <select name="type" class="form-control c-square c-theme">
+                                                {% for type in types %}
+                                                    <option value="{{ type.id }}"
+                                                            {% if type.name == "Any" %}selected{% endif %}>{{ type.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="input-name" class="col-md-4 control-label">Name<span
+                                                style="color: red">*</span></label>
+                                        <div class="col-md-6">
+                                            <input name="name" type="text"
+                                                   class="form-control  c-square c-theme required-input-custom"
+                                                   id="input-name"
+                                                   placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type" class="col-md-4 control-label">Contact<span
+                                                style="color: red">*</span></label>
+                                        <div class="col-md-6">
+                                            <div class="input-group c-square">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                                            id="contact-type-id"
+                                                            name="contact-type"
+                                                            data-toggle="dropdown" aria-expanded="false">Telegram
+                                                        <span class="caret"></span></button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a data-key="telegram" class="contact-type"
+                                                               href="javascript:;">Telegram</a></li>
+                                                        <li><a data-key="phone" class="contact-type"
+                                                               href="javascript:;">Phone</a></li>
+                                                        <li><a data-key="email" class="contact-type"
+                                                               href="javascript:;">Email</a></li>
+                                                    </ul>
+                                                </div><!-- /btn-group -->
+                                                <input name="contact_type" type="hidden" value="telegram">
+                                                <input name="contact" type="text"
+                                                       class="form-control  c-square c-theme required-input-custom"
+                                                       aria-label="..." placeholder="@username" required>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label for="input_weight" class="col-md-4 control-label">Description</label>
+                                        <div class="col-md-6">
+                                            <textarea placeholder="120 characters..." name="comment"
+                                                      class="form-control  c-square c-theme" rows="3"
+                                                      style="height: 130px;resize: none"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group c-margin-t-40">
+                            <div class="col-sm-offset-4 col-md-8">
+                                <button style="width: 80px"
+                                        class="btn c-theme-btn c-btn-square c-btn-uppercase c-btn-bold save-new-load">
+                                    Save
+                                </button>
+                                <button style="width: 80px"
+                                        class="btn btn-default c-btn-square c-btn-uppercase c-btn-bold cancel-new-load">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

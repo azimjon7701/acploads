@@ -1,0 +1,108 @@
+<!-- BEGIN: HEADER -->
+{% load static %}
+<header class="c-layout-header c-layout-header-default c-layout-header-dark-mobile c-header-transparent-dark"
+        data-minimize-offset="80" style="height: 65px !important;">
+
+    <div class="c-navbar" style="height: 65px !important;">
+        <div class="container container-nav">
+            <!-- BEGIN: BRAND -->
+            <div class="c-navbar-wrapper clearfix short-nav">
+                <div class="c-brand c-pull-left logo-anycap" style="margin-top: 22px !important;">
+                    <a href="{% url 'home' %}" class="c-logo">
+                        <img style="height: 40px;width: auto" src="{% static 'custom-icons/anycappro2.svg' %}"
+                             alt="AnyCapPro"
+                             class="c-desktop-logo">
+                        <img src="{% static 'base/img/layout/logos/anycappro2.svg' %}" alt="AnyCapPro"
+                             class="c-desktop-logo-inverse">
+                        <img src="{% static 'base/img/layout/logos/anycappro2.svg' %}" alt="AnyCapPro"
+                             class="c-mobile-logo">
+                    </a>
+                    <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                        <span class="c-line"></span>
+                    </button>
+                    <button class="c-topbar-toggler" type="button">
+                        <i class="fa fa-ellipsis-v"></i>
+                    </button>
+                </div>
+                <!-- END: BRAND -->
+                <!-- BEGIN: HOR NAV -->
+                <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- BEGIN: MEGA MENU -->
+                <!-- Dropdown menu toggle on mobile: c-toggler class can be applied to the link arrow or link itself depending on toggle mode -->
+                <nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+                    <ul class="navbar-nav c-theme-nav">
+                        <li {% if current_menu == 'shipper' %}class="c-active"{% endif %} class="c-menu-type-classic">
+                            <a href="{% url 'shipper' %}"
+                               class="menu-button-main btn c-btn-grey-2 c-btn-uppercase c-btn-bold c-btn-border-1x">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-box2-fill" viewBox="0 0 16 16">
+                                    <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5ZM15 4.667V5H1v-.333L1.5 4h6V1h1v3h6l.5.667Z"/>
+                                </svg>&nbsp;
+                                Post loads<span
+                                    class="c-arrow c-toggler"></span></a>
+                        </li>
+                        <li {% if current_menu == 'carrier' %}class="c-active"{% endif %}>
+                            <a href="{% url 'carrier' %}"
+                               class="menu-button-main btn c-btn-grey-2 c-btn-uppercase c-btn-bold c-btn-border-1x  menu-button-last">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                                Find
+                                loads<span
+                                    class="c-arrow c-toggler"></span></a>
+
+                        </li>
+                        <li>
+                            <a  {% if request.user.username %}
+                                class="c-cart-toggler c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold nav-menu-mixed-link auth-link-mixed"
+                                href="javascript:;"
+                            {% else %}
+                                href="{% url 'login' %}"
+                                class="c-btn-border-opacity-04 c-btn btn-no-focus c-btn-header btn btn-sm c-btn-border-1x c-btn-white c-btn-circle c-btn-uppercase c-btn-sbold nav-menu-mixed-link auth-link-mixed"
+                            {% endif %}
+                                style="margin-top: 17px !important;"
+                            ><i class="icon-user"></i> {% if request.user.profile %}{{ request.user.profile }}{% else %}SIGN IN{% endif %}</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- END: MEGA MENU --><!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                <!-- END: HOR NAV -->
+
+                <!-- BEGIN: CART MENU -->
+                <div class="c-cart-menu user-cart-modal"
+                     style="    width: 120px !important;
+                                top: 68%!important;
+                                right: -0.8% !important;
+                                border-radius: 3px;">
+                    <ul class="c-cart-menu-items" style="margin-bottom: 0px;">
+                        <li class="user-cart-content-li select-modal-header">
+                            <div class="c-cart-menu-content user-cart-content">
+                                <a href="{% url 'account' %}"
+                                   class="c-item-name c-font-sbold user-cart-content-a">Profile</a>
+                            </div>
+                        </li>
+                        <li class="user-cart-content-li select-modal-header">
+                            <div class="c-cart-menu-content user-cart-content">
+                                <a href="{% url 'blocked-users' %}"
+                                   class="c-item-name c-font-sbold user-cart-content-a">Report</a>
+                            </div>
+                        </li>
+                        <li class="user-cart-content-li select-modal-footer">
+                            <div class="c-cart-menu-content user-cart-content">
+                                <a href="{% url 'logout' %}" class="c-item-name c-font-sbold user-cart-content-a">Log
+                                    out</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- END: CART MENU --><!-- END: LAYOUT/HEADERS/QUICK-CART -->
+            </div>
+            <!-- BEGIN: LAYOUT/HEADERS/QUICK-CART -->
+        </div>
+    </div>
+</header>
+<!-- END: HEADER -->
