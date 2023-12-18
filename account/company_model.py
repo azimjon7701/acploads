@@ -2,13 +2,31 @@ from django.db import models
 
 
 class Company(models.Model):
-    company_id = models.CharField(max_length=4, unique=True)
+    class EntityTypeEnum(models.TextChoices):
+        CARRIER = 'Carrier', 'carrier'
+        BROKER = 'Broker', 'broker'
+    company_id = models.CharField(max_length=4, unique=True, null=True)
+    ms = models.CharField(max_length=30, null=True, blank=True)
+    usdot = models.CharField(max_length=30, null=True, blank=True)
+    entity_type = models.CharField(max_length=10, choices=EntityTypeEnum.choices, default=EntityTypeEnum.CARRIER)
     name = models.CharField(max_length=200, null=True, blank=True)
+    dba_name = models.CharField(max_length=200, null=True, blank=True)
+    address1 = models.CharField(max_length=200, null=True, blank=True)
+    address2 = models.CharField(max_length=200, null=True, blank=True)
+    country = models.CharField(max_length=200, null=True, blank=True)
+    state = models.CharField(max_length=200, null=True, blank=True)
+    city = models.CharField(max_length=200, null=True, blank=True)
+    zip_code = models.CharField(max_length=200, null=True, blank=True)
     is_active = models.BooleanField(default=False)
     status = models.BooleanField(default=False, null=True, blank=True)
     phone = models.CharField(null=True, blank=True, max_length=20)
-    telegram = models.CharField(null=True, blank=True, max_length=50)
     email = models.CharField(null=True, blank=True, max_length=50)
+    credit_score = models.IntegerField(null=True, blank=True, default=0)
+    authority = models.FileField(null=True, blank=True)
+    w9 = models.FileField(null=True, blank=True)
+    insurance = models.FileField(null=True, blank=True)
+    other1 = models.FileField(null=True, blank=True)
+    other2 = models.FileField(null=True, blank=True)
 
     # Ratings
     loc = models.FloatField(default=0, null=True)

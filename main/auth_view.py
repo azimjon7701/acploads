@@ -8,10 +8,10 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 
 from account.company_model import CompanyEmployee
-from account.models import Profile, Verification, ResetVerification, Company
+from account.models import Profile, Verification, ResetVerification, Company, generate_rand_username
 from any_cap.settings import get_current_url
 from utils.email import generate_verification, generate_reset_verification, send_verify_request_to_admin
-from utils.helpers import generate_rand_username
+
 
 
 def custom_login(request, user):

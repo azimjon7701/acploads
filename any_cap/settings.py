@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
     'main.apps.MainConfig',
-    'places.apps.PlacesConfig'
+    'places.apps.PlacesConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'any_cap.wsgi.application'
+
+REST_FRAMEWORK = {
+    'AUTH_TOKEN_CLASSES': [
+        'account.models.AuthToken',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'utils.authentication.AuthTokenAuthentication',  # O'zingizning AuthToken klasingizning joylashuvi
+        # Boshqa autentifikatsiya klaslari
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -138,6 +150,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 import os
+
 STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
@@ -166,5 +179,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "anycappro@gmail.com"
 EMAIL_HOST_PASSWORD = "iqaxkohzdbdncgzq"
 
+
 def get_current_url():
-        return "http://127.0.0.1:8000/" if DEBUG else "https://anycappro.com/"
+    return "http://127.0.0.1:8000/" if DEBUG else "https://anycappro.com/"

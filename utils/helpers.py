@@ -36,10 +36,6 @@ def get_date_or_none(data):
     return datetime.datetime.strptime(data, "%Y-%m-%d") if data != "" else None
 
 
-def generate_rand_username():
-    return f'anycap{random.randint(1000000, 10000000)}'
-
-
 def get_as_tg_username(username):
     return username if username.startswith('@') else '@' + username
 
