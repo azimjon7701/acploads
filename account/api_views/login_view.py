@@ -19,7 +19,7 @@ class LoginViewSet(GenericViewSet, CreateModelMixin):
 
             if user is not None:
                 login(request, user)
-                token, created = models.AuthToken.objects.get_or_create(user=user)
+                token = models.AuthToken.objects.create(user=user)
                 return Response({'token': token.key})
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)

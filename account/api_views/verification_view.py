@@ -20,7 +20,7 @@ class VerificationViewSet(GenericViewSet, ListModelMixin):
             )
         if Verification.objects.filter(code=verification_key).exists():
             verify = Verification.objects.filter(code=verification_key).first()
-            if verify.code == verification_key and verify.expired_date > timezone.now():
+            if str(verify.code) == verification_key and verify.expired_date > timezone.now():
                 verify.user.is_active = True
                 verify.user.save()
                 return Response(
