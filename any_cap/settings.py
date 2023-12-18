@@ -88,7 +88,7 @@ REST_FRAMEWORK = {
 
 '''
 ps_user:anycap_user
-name:anycap_db
+name:acp_db
 pass:p9B$f7gt^%FcM
 '''
 #
@@ -100,15 +100,15 @@ pass:p9B$f7gt^%FcM
 # }
 
 """
-create database anycap_db;
+create database acp_db;
 create user anycap_user with encrypted password 'p9B$f7gt^%FcM';
-grant all privileges on database anycap_db to anycap_user;
+grant all privileges on database acp_db to anycap_user;
 """
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'anycap_db',
+        'NAME': 'acp_db',
         'USER': 'anycap_user',
         'PASSWORD': 'p9B$f7gt^%FcM',
         'HOST': 'localhost',
