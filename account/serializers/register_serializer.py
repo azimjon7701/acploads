@@ -20,11 +20,6 @@ class RegisterSerializer(serializers.Serializer):
             raise serializers.ValidationError("Invalid phone number format: phone")
         return value
 
-    def validate_company_phone(self, value):
-        if not value.startswith('+') or not value[1:].isdigit():
-            raise serializers.ValidationError("Invalid phone number format: company_phone")
-        return value
-
     def validate(self, data):
         password = data.get('password')
         confirm_password = data.get('confirm_password')

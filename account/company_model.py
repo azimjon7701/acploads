@@ -6,7 +6,7 @@ class Company(models.Model):
         CARRIER = 'Carrier', 'carrier'
         BROKER = 'Broker', 'broker'
     company_id = models.CharField(max_length=4, unique=True, null=True)
-    ms = models.CharField(max_length=30, null=True, blank=True)
+    mc = models.CharField(max_length=30, null=True, blank=True)
     usdot = models.CharField(max_length=30, null=True, blank=True)
     entity_type = models.CharField(max_length=10, choices=EntityTypeEnum.choices, default=EntityTypeEnum.CARRIER)
     name = models.CharField(max_length=200, null=True, blank=True)
