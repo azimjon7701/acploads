@@ -27,7 +27,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
-CORS_ALLOWED_ORIGINS = ['*://*']
+CORS_ALLOWED_ORIGINS = ['localhost:3000']
 
 CORS_ALLOW_METHODS = [
     'DELETE',
