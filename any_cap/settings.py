@@ -181,4 +181,4 @@ EMAIL_HOST_PASSWORD = "iqaxkohzdbdncgzq"
 
 
 def get_current_url():
-    return "http://127.0.0.1:8000/" if DEBUG else "https://anycappro.com/"
+    return "http://127.0.0.1:8000/" if DEBUG else "https://new-api.anycappro.com/"

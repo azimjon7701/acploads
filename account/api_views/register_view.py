@@ -42,8 +42,10 @@ class RegisterViewSet(GenericViewSet, CreateModelMixin):
             last_name=last_name,
             username=generate_rand_username(),
             email=email,
-            password=password
+            is_staff=False
         )
+        user.set_password(password)
+        user.save()
         profile = models.Profile.objects.create(
             user=user,
             phone=phone
