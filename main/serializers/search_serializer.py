@@ -14,6 +14,7 @@ class SearchSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
     pickup_date_for_picker = serializers.DateField(source='pickup_date', format='%Y-%m-%d', required=False,
                                                    read_only=True)
+    result_count = serializers.IntegerField(source='result_count', read_only=True)
 
     class Meta:
         model = Search
@@ -32,6 +33,9 @@ class SearchSerializer(serializers.ModelSerializer):
             'weight',
             'type_operator',
             'type',
+            'truck_status',
+            'notification_status',
+            'results_count'
         ]
 
 
