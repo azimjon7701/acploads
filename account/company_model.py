@@ -75,4 +75,7 @@ class CompanyEmployee(models.Model):
     joined_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.employee} is {'' if self.is_active else 'none'} active {'owner' if self.is_owner else 'member'} of {self.company} company"
+        try:
+            return f"{self.employee} is {'' if self.is_active else 'none'} active {'owner' if self.is_owner else 'member'} of {self.company} company"
+        except Exception as e:
+            return f"CompanyEmployee({self.id})"
