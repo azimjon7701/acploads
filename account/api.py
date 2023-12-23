@@ -8,3 +8,4 @@ router.register(r'check-phone', api_views.PhoneCheckViewSet, basename='check-pho
 router.register(r'register', api_views.RegisterViewSet, basename='register')
 router.register(r'verify-account', api_views.VerificationViewSet, basename='verify-account')
 router.register(r'login', api_views.LoginViewSet, basename='login')
+router.register(r'me', api_views.MyProfileViewSet, basename='me')

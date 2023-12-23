@@ -1,5 +1,7 @@
 from rest_framework.permissions import BasePermission
-from account import models
+
+from utils.authentication import get_current_user
+
 
 class IsCarrier(BasePermission):
     """
@@ -7,6 +9,8 @@ class IsCarrier(BasePermission):
     """
 
     def has_permission(self, request, view):
-        profile:models.Profile = request.user.profile
-        # bu yerda companiya carrier ekanligini tekshiradigan kod bo'lishi kerak
-        return bool(request.user and request.user.is_authenticated)
+        user_data = get_current_user()
+        entity_type = user_data.get('entity_type')
+        if bool(request.user and request.user.is_authenticated) and entity_type == 'carrier':
+            return True
+        return False

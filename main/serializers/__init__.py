@@ -1,1 +1,2 @@
 from main.serializers.search_serializer import SearchSerializer
+from main.serializers.load_type_serializer import LoadTypeSerializer

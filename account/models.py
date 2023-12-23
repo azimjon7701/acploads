@@ -17,6 +17,10 @@ class Profile(models.Model):
     customer_id = models.IntegerField(null=True, blank=True)
     status = models.BooleanField(default=False, null=True, blank=True)
 
+    def get_company(self) -> Company:
+        ce: CompanyEmployee = self.company_employees.all().first()
+        return ce.company
+
     def generate_customer_id(self):
         self.customer_id = 10000 + self.id
         self.save()

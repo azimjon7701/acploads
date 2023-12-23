@@ -2,13 +2,14 @@ from rest_framework import serializers
 
 
 class MeSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
     entity_type = serializers.ChoiceField(choices=['carrier', 'broker', 'shipper'], required=True)
     first_name = serializers.CharField(max_length=100, required=True)
     last_name = serializers.CharField(max_length=100, required=True)
     email = serializers.EmailField()
     phone = serializers.CharField(max_length=20, required=False)
-    mc = serializers.IntegerField(required=False)
-    usdot = serializers.IntegerField(required=False)
+    mc = serializers.CharField(max_length=20, required=False)
+    usdot = serializers.CharField(max_length=20, required=False)
     company_name = serializers.CharField(max_length=200, required=False)
     company_address = serializers.CharField(max_length=200, required=False)
     company_phone = serializers.CharField(max_length=20, required=False)

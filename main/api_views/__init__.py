@@ -1,1 +1,2 @@
 from main.api_views.search_view import SearchViewSet
+from main.api_views.load_type_view import LoadTypeReadOnlyViewSet
