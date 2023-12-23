@@ -59,4 +59,6 @@ class SearchInputSerializer(serializers.ModelSerializer):
             'weight',
             'type_operator',
             'types',
+            'truck_status',
+            'notification_status'
         ]
