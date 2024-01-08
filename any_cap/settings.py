@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'https://acploads.com/'
+    'https://acploads.com'
 ]
 
 CORS_ALLOW_METHODS = [
