@@ -34,7 +34,7 @@ class RegisterViewSet(GenericViewSet, CreateModelMixin):
         return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
     def __create_carrier_dispatcher(self, validated_data: dict):
-        entity_type = validated_data.get('entity_type')
+        entity_type = 'carrier_dispatcher'
         first_name = validated_data.get('first_name')
         last_name = validated_data.get('last_name')
         email = validated_data.get('email')

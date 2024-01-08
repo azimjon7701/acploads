@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 
 class RegisterSerializer(serializers.Serializer):
-    entity_type = serializers.ChoiceField(choices=['carrier', 'broker', 'shipper'], required=True)
+    entity_type = serializers.ChoiceField(choices=['carrier_dispatcher','carrier', 'broker', 'shipper'], required=True)
     first_name = serializers.CharField(max_length=100, required=True)
     last_name = serializers.CharField(max_length=100, required=True)
     email = serializers.EmailField()
