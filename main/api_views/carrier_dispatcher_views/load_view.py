@@ -48,11 +48,9 @@ class LoadViewSet(viewsets.ModelViewSet):
     #             )
     #     return serializer_class(*args, **kwargs)
 
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     query = Q(owner=user.profile)
-    #     queryset = self.queryset.filter(query)
-    #     return queryset
+    def get_queryset(self):
+        queryset = self.queryset.all()[:100]
+        return queryset
 
     def perform_create(self, serializer):
         load = Load.objects.create(
