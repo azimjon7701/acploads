@@ -1,7 +1,8 @@
 from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from main import api_views
 
-router = DefaultRouter()
-router.register(r'search', api_views.SearchViewSet, basename='Search')
-router.register(r'load-type', api_views.LoadTypeReadOnlyViewSet, basename='Load Type')
+from main.api_views import common_views, carrier_dispatcher_views
+
+urlpatterns = [
+    path('common/', include(common_views.common_router.urls)),
+    path('carrier-dispatcher/', include(carrier_dispatcher_views.carrier_dispatcher_router.urls))
+]

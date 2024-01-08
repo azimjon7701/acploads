@@ -3,12 +3,14 @@ from django.db import models
 
 class Company(models.Model):
     class EntityTypeEnum(models.TextChoices):
+        CARRIER_DISPATCHER = 'Carrier_dispatcher', 'carrier_dispatcher'
         CARRIER = 'Carrier', 'carrier'
         BROKER = 'Broker', 'broker'
+        SHIPPER = 'Shipper', 'shipper'
     company_id = models.CharField(max_length=4, unique=True, null=True)
     mc = models.CharField(max_length=30, null=True, blank=True)
     usdot = models.CharField(max_length=30, null=True, blank=True)
-    entity_type = models.CharField(max_length=10, choices=EntityTypeEnum.choices, default=EntityTypeEnum.CARRIER)
+    entity_type = models.CharField(max_length=20, choices=EntityTypeEnum.choices, default=EntityTypeEnum.CARRIER)
     name = models.CharField(max_length=200, null=True, blank=True)
     dba_name = models.CharField(max_length=200, null=True, blank=True)
     address1 = models.CharField(max_length=200, null=True, blank=True)

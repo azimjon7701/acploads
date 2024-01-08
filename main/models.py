@@ -16,7 +16,16 @@ type_operators = (
 )
 
 
+class LoadTypeCategory(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class LoadType(models.Model):
+    category = models.ForeignKey(LoadTypeCategory, on_delete=models.CASCADE, related_name='types', null=True,
+                                 blank=True)
     name = models.CharField(max_length=100)
 
     def __str__(self):
@@ -30,6 +39,7 @@ class Load(models.Model):
     published_date = models.DateTimeField(auto_now=True)
     created_date = models.DateTimeField(auto_now_add=True, null=True)
     pickup_date = models.DateField(null=True)
+    age = models.IntegerField(null=True, blank=True)
     dlv_date = models.DateField(null=True)
     origin = models.CharField(max_length=255)
     dh_o = models.FloatField(null=True)
@@ -64,8 +74,6 @@ class Load(models.Model):
             'distance': round(float(self.distance)) if self.distance else "-",
             'length': get_data_str(self.length),
             'weight': get_data_str(self.weight),
-            "type_id": get_data_str(self.type_id),
-            "type": self.type.name if self.type else "-",
             "contact": get_data_str(self.contact),
             "contact_type": get_data_str(self.contact_type),
             "contact_rendered": render_contact_by_type(self.contact_type, self.contact),

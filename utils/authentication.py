@@ -40,6 +40,7 @@ def manage_current_user(token: models.AuthToken) -> dict:
         "phone": profile.phone,
         "mc": company.mc,
         "usdot": company.usdot,
+        "company_id": company.id,
         "company_name": company.name,
         "company_address": company.address1,
         "company_phone": company.phone
